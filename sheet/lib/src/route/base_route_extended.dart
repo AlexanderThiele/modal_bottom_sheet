@@ -95,6 +95,7 @@ class CupertinoExtendedPage<T> extends Page<T> {
     this.maintainState = true,
     this.title,
     this.fullscreenDialog = false,
+    this.transitionDuration,
     super.key,
     super.name,
     super.arguments,
@@ -112,6 +113,11 @@ class CupertinoExtendedPage<T> extends Page<T> {
 
   /// {@macro flutter.widgets.PageRoute.fullscreenDialog}
   final bool fullscreenDialog;
+
+  /// set the duration of page transition animation
+  ///
+  /// Default is 500 ms
+  final Duration? transitionDuration;
 
   @override
   Route<T> createRoute(BuildContext context) {
@@ -133,6 +139,10 @@ class _PageBasedCupertinoPageRoute<T> extends CupertinoExtendedPageRoute<T> {
   Widget buildContent(BuildContext context) {
     return _page.child;
   }
+
+  @override
+  Duration get transitionDuration =>
+      _page.transitionDuration ?? super.transitionDuration;
 
   @override
   String? get title => _page.title;
