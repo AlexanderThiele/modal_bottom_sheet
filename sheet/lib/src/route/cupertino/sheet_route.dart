@@ -332,6 +332,9 @@ class CupertinoSheetPage<T> extends Page<T> {
   /// {@macro flutter.widgets.modalRoute.maintainState}
   final bool maintainState;
 
+  /// Add stop positions to the sheet
+  ///
+  /// default is [0,1]
   final List<double>? stops;
 
   @override
