@@ -320,6 +320,7 @@ class CupertinoSheetPage<T> extends Page<T> {
   const CupertinoSheetPage({
     required this.child,
     this.maintainState = true,
+    this.stops,
     super.key,
     super.name,
     super.arguments,
@@ -331,9 +332,11 @@ class CupertinoSheetPage<T> extends Page<T> {
   /// {@macro flutter.widgets.modalRoute.maintainState}
   final bool maintainState;
 
+  final List<double>? stops;
+
   @override
   Route<T> createRoute(BuildContext context) {
-    return _PageBasedCupertinoSheetRoute<T>(page: this);
+    return _PageBasedCupertinoSheetRoute<T>(page: this, stops: stops);
   }
 }
 
