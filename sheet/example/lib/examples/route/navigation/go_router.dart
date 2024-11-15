@@ -153,15 +153,26 @@ class BookDetailsScreen extends StatelessWidget {
       appBar: const CupertinoNavigationBar(
         middle: Text('Book'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0) + const EdgeInsets.only(top: 52.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(book.title, style: Theme.of(context).textTheme.titleLarge),
-            Text(book.author, style: Theme.of(context).textTheme.titleMedium),
-          ],
-        ),
+      body: Stack(
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.all(8.0) + const EdgeInsets.only(top: 52.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(book.title, style: Theme.of(context).textTheme.titleLarge),
+                Text(book.author,
+                    style: Theme.of(context).textTheme.titleMedium),
+              ],
+            ),
+          ),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return Text("Layout maxHeight: ${constraints.maxHeight}");
+            },
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
